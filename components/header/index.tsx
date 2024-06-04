@@ -41,7 +41,7 @@ export const Header: FC = () => {
             <hr className={styles['header_horizontal-line']} />
             <div className={styles.header_second}>
                 <Link href={'/'}>
-                    <Image src={'/logo.svg'} width={177} height={48} alt='Logo' />
+                    <Image src={'./logo.svg'} width={177} height={48} alt='Logo' />
                 </Link>
                 <Input placeholder='Search for anything...'>
                     <Icon name='search' />
