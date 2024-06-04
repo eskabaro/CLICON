@@ -1,0 +1,17 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.wrapper {
+    @include flexHorizontalGap(2);
+    background-color: $gray-00;
+    padding: toRem(14) toRem(20);
+    max-width: em(640);
+    width: 100%;
+    border-radius: toRem(2);
+
+    > input {
+        &::placeholder {
+            color: $gray-500;
+        }
+    }
+}

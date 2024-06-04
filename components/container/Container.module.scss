@@ -1,0 +1,7 @@
+@import '../../styles/mixins.scss';
+
+.wrapper {
+    &_container {
+        @include container;
+    }
+}

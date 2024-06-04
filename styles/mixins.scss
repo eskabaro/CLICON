@@ -1,0 +1,127 @@
+@use 'sass:math';
+@import './variables.scss';
+
+@function math-div($a, $b) {
+    @return calc($a / $b);
+}
+
+@function percent($px, $from) {
+    $result: math-div($px, $from) * 100%;
+    @return $result;
+}
+
+@function toRem($px) {
+    $result: math-div($px, 16) + rem;
+    @return $result;
+}
+
+@function em($px, $current: 16) {
+    $result: math-div($px, $current) + em;
+    @return $result;
+}
+
+// animations
+@mixin transformAnimation {
+    transition: transform 0.2s ease-in-out;
+}
+
+@mixin opacityAnimation {
+    transition: opacity 0.1s ease-out;
+}
+
+@mixin allAnimation($animation, $time) {
+    transition: $animation $time ease-out;
+}
+
+// flex
+@mixin flexHorizontalGap($count) {
+    $gap: $count * 4;
+
+    display: flex;
+    flex-direction: row;
+    column-gap: toRem($gap);
+}
+
+@mixin flexVerticalGap($count) {
+    $gap: $count * 4;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: toRem($gap);
+}
+
+// container
+@mixin container {
+    max-width: calc(1320px + 10%);
+    padding-inline: 5%;
+    margin: auto;
+    width: 100%;
+}
+
+// adaptive value
+@mixin fontSize($min, $vw, $max, $weight, $lh: 100%) {
+    font-size: clamp(toRem($min), $vw, toRem($max));
+    font-weight: $weight;
+    line-height: $lh;
+    letter-spacing: 0.03em;
+}
+
+@mixin adaptiveValue(
+    $property,
+    $startSize,
+    $minSize,
+    $widthFrom: $maxWidthContainer,
+    $widthTo: $minWidth,
+    $keepSize: 0
+) {
+    @if ($startSize==0) {
+        $startSize: 0.000001;
+    }
+    @if ($minSize==0) {
+        $minSize: 0.000001;
+    }
+
+    $addSize: math-div($startSize - $minSize, 16);
+
+    @if ($maxWidthContainer == 0) {
+        $widthFrom: $maxWidth;
+    }
+
+    $widthFromMedia: em($widthFrom);
+    $widthToMedia: em($widthTo);
+
+    $slope: math-div(($startSize - $minSize), ($widthFrom - $widthTo));
+    $yIntersection: -$widthTo * $slope + $minSize;
+    @if ($yIntersection==0) {
+        $yIntersection: 0.000001;
+    }
+
+    $flyValue: #{toRem($yIntersection)}' + ' #{$slope * 100}vw;
+
+    $propertyValue: #{'clamp(' toRem($minSize) ',' $flyValue ',' toRem($startSize) ')'};
+    @if ($minSize > $startSize) {
+        $propertyValue: #{'clamp(' toRem($startSize) ',' $flyValue ',' toRem($minSize) ')'};
+    }
+
+    @supports (#{$property}: $propertyValue) {
+        #{$property}: $propertyValue;
+    }
+
+    @supports not (#{$property}: $propertyValue) {
+        #{$property}: calc(
+            #{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math-div($widthFrom, 16) -
+                math-div($widthTo, 16)}
+        );
+    }
+
+    @if $widthFrom != $maxWidth and $keepSize != 1 and $keepSize != 2 {
+        @media (min-width: $widthFromMedia) {
+            #{$property}: inherit;
+        }
+    }
+    @if $widthTo != $minWidth and $keepSize != 1 and $keepSize != 3 {
+        @media (max-width: $widthToMedia) {
+            #{$property}: inherit;
+        }
+    }
+}

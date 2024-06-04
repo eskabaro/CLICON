@@ -1,0 +1,76 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+$line-color: rgba($gray-00, $alpha: 0.16);
+
+.header {
+    background-color: $secondary-700;
+    color: $gray-00;
+
+    &_first {
+        @include flexHorizontalGap(4);
+        padding-block: toRem(12);
+        justify-content: space-between;
+
+        > ul {
+            @include flexHorizontalGap(3);
+        }
+    }
+
+    &_horizontal-line {
+        background-color: $line-color;
+        height: toRem(1);
+        box-shadow: 0 0 0 100vmax $line-color;
+        clip-path: inset(0 -100vmax);
+    }
+
+    &_second {
+        @include flexHorizontalGap(6);
+        padding-block: toRem(20);
+        justify-content: space-between;
+    }
+
+    &_sorting {
+    }
+}
+
+.right-side {
+    @include flexHorizontalGap(6);
+
+    &_line {
+        width: toRem(1);
+        height: 100%;
+        background-color: $line-color;
+    }
+
+    &_btn-box {
+        @include flexHorizontalGap(6);
+
+        > button {
+            @include flexHorizontalGap(1.5);
+            align-items: center;
+        }
+    }
+
+    > ul {
+        @include flexHorizontalGap(3);
+
+        > li {
+            display: flex;
+            align-items: center;
+
+            > span {
+                @include fontSize(14, 4vw, 14, 400);
+            }
+        }
+    }
+}
+
+.navigation {
+    @include flexHorizontalGap(6);
+    align-items: center;
+
+    > svg {
+        cursor: pointer;
+    }
+}
