@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.wrapper {
+    &_content {
+        @include flexHorizontalGap(5);
+        justify-content: space-between;
+        padding-block: toRem(16);
+    }
+
+    &_line {
+        height: 1px;
+        background-color: $gray-100;
+        box-shadow: 0 0 0 100vmax $gray-100;
+        clip-path: inset(0 -100vmax);
+    }
+}
+
+.link {
+    @include flexHorizontalGap(2);
+    align-items: center;
+}

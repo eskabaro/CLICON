@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.wrapper {
+    background-color: $gray-50;
+    padding-block: toRem(26);
+
+    &_list {
+        @include flexHorizontalGap(2);
+    }
+}
+
+.item {
+    @include flexHorizontalGap(2);
+    @include fontSize(14, 4vw, 14, 400);
+    align-items: center;
+
+    &.active {
+        color: $secondary-500;
+    }
+}

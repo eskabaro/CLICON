@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Public_Sans } from 'next/font/google'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { HeaderNav } from '@/components/header-nav'
+import { Navbar } from '@/components/navbar'
+import { Breadcrumb } from '@/components/breadcrumb'
 import '../styles/global.scss'
 
 const publicSans = Public_Sans({
@@ -25,7 +26,8 @@ export default function RootLayout({
             <body className={publicSans.className}>
                 <div className='wrapper'>
                     <Header />
-                    <HeaderNav />
+                    <Navbar />
+                    <Breadcrumb />
                     <main>{children}</main>
                     <Footer />
                 </div>
