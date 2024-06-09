@@ -1,3 +1,9 @@
+import { Container } from '@/components/container'
+
 export default function HomePage() {
-    return <div>Home page</div>
+    return (
+        <Container as='section'>
+            <div>HomePage</div>
+        </Container>
+    )
 }

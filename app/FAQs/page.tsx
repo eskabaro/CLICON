@@ -1,6 +1,6 @@
 import { Container } from '@/components/container'
-import { Questions } from '@/pages/FAQs/questions'
-import { Form } from '@/pages/FAQs/form'
+import { Questions } from './(ui)/questions'
+import { Form } from './(ui)/form'
 import styles from './FAQs.module.scss'
 
 export default function FAQsPage() {

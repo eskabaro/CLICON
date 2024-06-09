@@ -1,5 +1,5 @@
 import { Container } from '@/components/container'
-import { Form } from '@/pages/track-order/form'
+import { Form } from './(ui)/form'
 import styles from './TrackOrder.module.scss'
 
 export default function TrackOrderPage() {

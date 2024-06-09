@@ -1,5 +1,5 @@
 import { Container } from '@/components/container'
-import { OrderStatus } from '@/pages/order-details/status'
+import { OrderStatus } from './(ui)/status'
 import styles from './Details.module.scss'
 
 export default function DetailsPage() {
