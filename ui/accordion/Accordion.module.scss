@@ -1,0 +1,53 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+    border-radius: toRem(4);
+    border: toRem(1) solid $gray-100;
+    overflow: hidden;
+    transition: all 0.2s ease;
+
+    &.active {
+        box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.12);
+    }
+}
+
+.accordion {
+    @include flexHorizontalGap(5);
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    padding: toRem(20) toRem(24);
+    align-items: center;
+    max-height: toRem(64);
+
+    &.active {
+        background-color: $primary-500;
+
+        .accordion_btn {
+            transform: rotate(180deg);
+        }
+
+        .accordion_title {
+            color: white;
+        }
+    }
+
+    &_title {
+        @include fontSize(18, 4vw, 18, 600);
+        color: $gray-900;
+    }
+
+    &_content {
+        overflow: hidden;
+        transition: max-height 0.2s ease;
+    }
+
+    &_text {
+        @include fontSize(14, 4vw, 14, 400, 143%);
+        padding: toRem(24);
+    }
+}

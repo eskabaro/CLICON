@@ -1,0 +1,12 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.wrapper {
+    padding-block: toRem(72);
+
+    &_box {
+        border: toRem(1) solid $gray-100;
+        border-radius: toRem(4);
+        padding: toRem(24);
+    }
+}

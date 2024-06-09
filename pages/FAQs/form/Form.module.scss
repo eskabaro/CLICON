@@ -1,0 +1,33 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.wrapper {
+    @include flexVerticalGap(6);
+    background-color: $warning-100;
+    padding: toRem(32);
+    max-width: em(424);
+    height: fit-content;
+
+    &_heading {
+        @include flexVerticalGap(3);
+
+        > h2 {
+            @include fontSize(18, 4vw, 18, 500);
+            color: $gray-900;
+        }
+
+        > p {
+            @include fontSize(14, 4vw, 14, 400, 143%);
+            color: $gray-700;
+        }
+    }
+
+    &_inputs-box {
+        @include flexVerticalGap(3);
+
+        > label,
+        textarea {
+            border-color: $warning-200;
+        }
+    }
+}

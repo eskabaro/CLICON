@@ -8,12 +8,15 @@ import { Icon } from '@/ui/icon'
 import { Text } from '@/ui/text'
 import { cn } from '@/lib/classnames'
 import styles from './Breadcrumb.module.scss'
+import { formatString } from '@/lib/format-string'
 
 export const Breadcrumb: FC = () => {
-    const pathname = usePathname()
+    const pathname = usePathname() as string
     const pathSegments = pathname.split('/').filter((segment) => segment)
 
     if (!pathSegments.length) return null
+
+    let accumulatedPath = ''
 
     return (
         <Container className={styles.wrapper}>
@@ -24,14 +27,15 @@ export const Breadcrumb: FC = () => {
                         <Text as='span'>Home</Text>
                     </Link>
                 </li>
-                {pathSegments.map((e, i) => {
-                    const isActive = `/${e}` === pathname
+                {pathSegments.map((segment, index) => {
+                    accumulatedPath += `/${segment}`
+                    const isActive = accumulatedPath === pathname
 
                     return (
-                        <li key={e + i} className={cn(styles.item, isActive && styles.active)}>
+                        <li key={segment + index} className={cn(styles.item, isActive && styles.active)}>
                             <Icon name='arrow-right' />
-                            <Link href={e}>
-                                <Text as='span'>{e}</Text>
+                            <Link href={segment}>
+                                <Text as='span'>{formatString(segment)}</Text>
                             </Link>
                         </li>
                     )

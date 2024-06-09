@@ -14,7 +14,7 @@ export const Footer: FC = () => {
             <div className={styles.wrapper_content}>
                 <div className={styles.info}>
                     <Link href={'/'}>
-                        <Image priority src={'./logo-2.svg'} width={177} height={48} alt='Logo' />
+                        <Image priority src={'/logo-2.svg'} width={177} height={48} alt='Logo' />
                     </Link>
                     <div className={styles.info_phone}>
                         <Text as='span'>Customer Supports:</Text>

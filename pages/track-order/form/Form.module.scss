@@ -1,0 +1,54 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.wrapper {
+    @include flexVerticalGap(6);
+
+    &_heading {
+        @include flexVerticalGap(4);
+
+        > h1 {
+            @include fontSize(32, 4vw, 32, 600);
+            color: $gray-900;
+        }
+
+        > p {
+            @include fontSize(16, 4vw, 16, 400, 150%);
+            color: $gray-600;
+            max-width: em(790);
+        }
+    }
+
+    &_fields {
+        @include flexVerticalGap(4);
+    }
+
+    &_btn {
+        margin-top: toRem(8);
+    }
+}
+
+.inputs-box {
+    @include flexHorizontalGap(6);
+}
+
+.field {
+    @include flexVerticalGap(2);
+
+    > span {
+        @include fontSize(14, 4vw, 14, 400);
+        color: $gray-900;
+    }
+
+    > label {
+        width: toRem(420);
+        border: toRem(1) solid $gray-100;
+    }
+}
+
+.info-box {
+    @include flexHorizontalGap(1.5);
+    @include fontSize(14, 4vw, 14, 400);
+    align-items: center;
+    color: $gray-600;
+}

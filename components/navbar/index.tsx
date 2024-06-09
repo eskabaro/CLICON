@@ -1,19 +1,34 @@
 'use client'
 
 import { FC } from 'react'
-import { Container } from '../container'
-import styles from './Navbar.module.scss'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { Container } from '../container'
 import { Icon } from '@/ui/icon'
-import { RecursiveList } from '../recursive-list'
-import { menuItems } from './const'
+import { cn } from '@/lib/classnames'
+import { menuItems, navItems } from './const'
+import styles from './Navbar.module.scss'
 
 export const Navbar: FC = () => {
+    const pathname = usePathname()
+
     return (
         <Container className={styles.wrapper}>
             <div className={styles.wrapper_content}>
                 <nav className={styles.navbar}>
-                    <RecursiveList list={menuItems} />
+                    <button className={styles['navbar_btn-list']}>
+                        All Category <Icon name='arrow-down-2' />
+                    </button>
+                    {navItems.map((e, i) => (
+                        <Link
+                            key={i}
+                            className={cn(styles.navbar_link, pathname?.includes(e.href) && styles.active)}
+                            href={e.href}
+                        >
+                            <Icon name={e.icon} />
+                            {e.title}
+                        </Link>
+                    ))}
                 </nav>
 
                 <div className={styles.link}>

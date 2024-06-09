@@ -1,0 +1,16 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.wrapper {
+    @include flexVerticalGap(10);
+    max-width: em(760);
+
+    > h1 {
+        @include fontSize(32, 4vw, 32, 600);
+        color: $gray-900;
+    }
+
+    &_accordions-box {
+        @include flexVerticalGap(5);
+    }
+}

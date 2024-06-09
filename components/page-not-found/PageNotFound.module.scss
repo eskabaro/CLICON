@@ -1,0 +1,41 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.wrapper {
+    padding: toRem(8) 0 toRem(124) 0;
+    text-align: center;
+
+    &_box {
+        @include flexVerticalGap(6);
+        max-width: em(535);
+        margin: auto;
+
+        > h1 {
+            @include fontSize(36, 4vw, 36, 600);
+            color: $gray-900;
+        }
+
+        > p {
+            @include fontSize(16, 4vw, 16, 400, 150%);
+            color: $gray-700;
+        }
+    }
+}
+
+.btn-box {
+    @include flexHorizontalGap(4);
+    justify-content: center;
+
+    > button:nth-child(2) {
+        > svg > path {
+            transition: stroke 0.2s ease;
+            stroke: $primary-500;
+        }
+
+        &:active {
+            > svg > path {
+                stroke: $primary-200;
+            }
+        }
+    }
+}

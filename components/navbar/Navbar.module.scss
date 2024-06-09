@@ -20,3 +20,46 @@
     @include flexHorizontalGap(2);
     align-items: center;
 }
+
+.navbar {
+    @include flexHorizontalGap(6);
+
+    &_btn-list {
+        @include fontSize(14, 4vw, 14, 500);
+        @include flexHorizontalGap(2);
+        align-items: center;
+        color: $gray-900;
+        background-color: $gray-50;
+        padding: toRem(14) toRem(24);
+        border-radius: toRem(2);
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        > svg > path {
+            transition: stroke 0.2s ease;
+        }
+
+        &:hover {
+            background-color: $primary-500;
+            color: $gray-00;
+
+            > svg > path {
+                stroke: $gray-00;
+            }
+        }
+    }
+
+    &_link {
+        @include fontSize(14, 4vw, 14, 400);
+        @include flexHorizontalGap(1.5);
+        align-items: center;
+        color: $gray-600;
+
+        &.active {
+            color: $primary-500;
+
+            > svg > path {
+                stroke: $primary-500;
+            }
+        }
+    }
+}

@@ -1,15 +1,17 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
 
-.wrapper {
-    @include flexHorizontalGap(2);
+.textarea {
     background-color: $gray-00;
     padding: toRem(14) toRem(20);
     max-width: em(640);
     width: 100%;
+    height: toRem(88);
     border-radius: toRem(2);
+    resize: vertical;
     border: toRem(1) solid $gray-00;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    min-height: toRem(49);
 
     &:focus-within {
         border-color: $primary-500;
@@ -18,13 +20,5 @@
     &.error {
         border-color: $danger-500;
         background-color: $danger-50;
-    }
-
-    > input {
-        background-color: transparent;
-
-        &::placeholder {
-            color: $gray-500;
-        }
     }
 }

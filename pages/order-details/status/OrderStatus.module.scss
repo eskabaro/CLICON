@@ -1,0 +1,49 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.wrapper {
+    @include flexVerticalGap(6);
+    padding-bottom: toRem(24);
+
+    &_heading {
+        @include flexHorizontalGap(5);
+        justify-content: space-between;
+        align-items: center;
+        padding: toRem(24);
+        border-radius: toRem(4);
+        border: toRem(1) solid $warning-200;
+        background-color: $warning-50;
+
+        > .price {
+            @include fontSize(28, 4vw, 28, 600);
+            color: $secondary-500;
+        }
+    }
+
+    &_stepper {
+        > .date {
+            @include fontSize(14, 4vw, 14, 400);
+            color: $gray-700;
+
+            > span {
+                font-weight: 500;
+                color: $gray-900;
+            }
+        }
+    }
+}
+
+.additional-info {
+    @include flexVerticalGap(2);
+
+    &_info {
+        @include fontSize(14, 4vw, 14, 400);
+        @include flexHorizontalGap(2);
+        color: $gray-700;
+    }
+
+    &_order-number {
+        @include fontSize(28, 4vw, 28, 400);
+        color: $gray-900;
+    }
+}
