@@ -1,1 +1,4 @@
-=== make breadcrumb functionality
+=== fix spinner colors
+=== optimization button component
+=== fix button color (variants)
+=== fix authorization bags and handling errors

@@ -1,9 +1,12 @@
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin('./app/(app)/_config/i18n')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-    images: {
-        unoptimized: true
+    env: {
+        BASE_API_URL: process.env.BASE_API_URL
     }
 }
 
-export default nextConfig
+export default withNextIntl(nextConfig)
